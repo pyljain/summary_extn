@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Summarizer</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <script src="marked.min.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      width: 450px;
+      height: 500px;
+    }
+    
+    .container {
+      padding: 1.5rem;
+    }
+    
+    .title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #485460;
+      margin-bottom: 1rem;
+    }
+    
+    #summarizeButton {
+      background-color: #ffc048;
+      transition: all 0.2s ease;
+    }
+    
+    #summarizeButton:hover {
+      background-color: #ffa801;
+      transform: translateY(-1px);
+    }
+    
+    #summarizeButton:active {
+      transform: translateY(1px);
+    }
+    
+    #summary {
+      height: 350px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #cbd5e0 #f7fafc;
+    }
+    
+    #summary::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    #summary::-webkit-scrollbar-track {
+      background: #f7fafc;
+    }
+    
+    #summary::-webkit-scrollbar-thumb {
+      background-color: #cbd5e0;
+      border-radius: 3px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .loading-spinner {
+      animation: spin 1s linear infinite;
+    }
+
+    /* Markdown Styles */
+    .markdown-body h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .markdown-body h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .markdown-body h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .markdown-body p {
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .markdown-body ul, .markdown-body ol {
+      margin-bottom: 0.75rem;
+      padding-left: 1.5rem;
+    }
+
+    .markdown-body ul {
+      list-style-type: disc;
+    }
+
+    .markdown-body ol {
+      list-style-type: decimal;
+    }
+
+    .markdown-body li {
+      margin-bottom: 0.25rem;
+    }
+
+    .markdown-body code {
+      background-color: #f1f5f9;
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.875em;
+    }
+
+    .markdown-body pre {
+      background-color: #f1f5f9;
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin-bottom: 0.75rem;
+    }
+
+    .markdown-body blockquote {
+      border-left: 4px solid #e2e8f0;
+      padding-left: 1rem;
+      margin-bottom: 0.75rem;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="container">
+    <h1 class="title">Page Summarizer</h1>
+    <button id="summarizeButton" class="w-full py-2 px-4 bg-indigo-600 text-white font-medium rounded-lg shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+      SUMMARIZE PAGE
+    </button>
+    <div id="summary" class="mt-4 p-3 bg-white rounded-lg border border-gray-200 shadow-sm">
+      <div class="flex items-center justify-center h-full text-gray-500">
+        Click the button to generate a summary
+      </div>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
